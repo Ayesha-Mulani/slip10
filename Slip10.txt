@@ -1,0 +1,26 @@
+SLIP 10#pip install pandas scikit-learn
+
+
+import pandas as pd  # Import the pandas library for data manipulation and analysis.
+from sklearn.datasets import load_iris  # Import the function to load the Iris dataset from scikit-learn.
+
+# Load the Iris dataset and store the data in the variable 'iris_data'.
+iris_data = load_iris()
+
+# Create a DataFrame using the Iris data and set the column names to the feature names of the dataset.
+df = pd.DataFrame(iris_data.data, columns=iris_data.feature_names)
+
+# Print the entire DataFrame to display the Iris dataset.
+print(df)
+
+# Randomly select 80% of the data for training and store it in 'training_data'.
+training_data = df.sample(frac=0.8, random_state=23)
+
+# Create 'testing_data' by dropping the training data from the original DataFrame.
+testing_data = df.drop(training_data.index)
+
+# Print the number of training examples in the training dataset.
+print(f"Number of training examples: {training_data.shape[0]}")
+
+# Print the number of testing examples in the testing dataset.
+print(f"Number of testing examples: {testing_data.shape[0]}")
